@@ -1,0 +1,6 @@
+.env
+__pycache__/
+*.py[cod]
+daily_news_preview.html
+email_style_preview.html
+.venv/
