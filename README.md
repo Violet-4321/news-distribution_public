@@ -74,9 +74,20 @@ EMAIL_FROM
 
 The workflow is in `.github/workflows/daily_news.yml`.
 
-It is scheduled at `22:21 UTC`, which is `06:21 Beijing Time` on the following calendar day. GitHub Actions scheduled workflows may start later than the configured cron time.
+The public template keeps scheduled runs disabled by default so it will not fail before you configure GitHub Secrets.
 
-You can also run it manually from the GitHub Actions tab through `workflow_dispatch`.
+After adding your own Secrets, you can run it manually from the GitHub Actions tab through `workflow_dispatch`.
+
+To enable daily scheduling, add a cron schedule such as:
+
+```yaml
+on:
+  schedule:
+    - cron: "21 22 * * *"
+  workflow_dispatch:
+```
+
+That example runs at `22:21 UTC`, which is `06:21 Beijing Time` on the following calendar day. GitHub Actions scheduled workflows may start later than the configured cron time.
 
 ## First-Version Limitations
 
