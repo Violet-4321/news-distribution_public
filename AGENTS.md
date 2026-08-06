@@ -16,13 +16,17 @@ Never add filler content.
 
 ## News Priorities
 
-Prioritize:
+The briefing covers two core areas as parallel priorities. A story only needs to be important in one of them, not both:
 
-* Business and economics: markets, company earnings, trade, macro
-* AI and AI-related industries
+* Business and economics: markets, company earnings, trade, macro, monetary policy
+* AI: model releases, AI chips and infrastructure, AI companies and industry trends
+
+Also prioritize:
+
 * Global coverage, with emphasis on China and other major powers (United States, Europe, Japan, India)
 * Major company events in China and worldwide
 * Major macroeconomic events
+* Balanced coverage across the two core areas
 
 ## Exclusions
 

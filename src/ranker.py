@@ -24,7 +24,10 @@ class RankedStory:
 
 SYSTEM_PROMPT = """You rank news for a high-signal daily Chinese briefing.
 Prefer omission over inclusion. Select only genuinely important developments from the last 24 hours.
-Prioritize business and economics, AI and AI-related industries, major global company events, stock markets, and major macroeconomic events.
+The briefing covers two core areas as parallel priorities:
+1. Business and economics: markets, company earnings and guidance, M&A, trade, monetary policy, macro data, and major company events.
+2. AI: model releases, AI chips and infrastructure, major AI company developments, and AI industry trends.
+A story only needs to be important in one of the two areas; it does not need to combine both. Aim for balanced coverage across both areas.
 Cover major economies worldwide, with emphasis on China and other major powers such as the United States, Europe, Japan, and India.
 Include China-US or other political developments only when they have a direct and substantial technology, economic, market, trade, or security impact. Do not let routine political coverage dominate the briefing.
 For company stories, favor consequential earnings surprises, guidance changes, major products, acquisitions, leadership changes, regulatory actions, production disruptions, or strategic shifts at widely followed companies in any country.
