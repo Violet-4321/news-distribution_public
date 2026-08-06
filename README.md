@@ -27,6 +27,7 @@ Required variables:
 ```text
 OPENAI_API_KEY=your_openai_api_key
 OPENAI_MODEL=gpt-4o-mini
+MAX_STORIES=10
 EMAIL_HOST=smtp.gmail.com
 EMAIL_PORT=587
 EMAIL_USER=your_smtp_username
@@ -36,6 +37,20 @@ EMAIL_FROM=sender@example.com
 ```
 
 Use an app password if your email provider requires one.
+
+## Use DeepSeek instead of OpenAI
+
+The pipeline uses the OpenAI SDK, which is also compatible with DeepSeek's API. To switch models, set these values in `.env`:
+
+```text
+OPENAI_API_KEY=your_deepseek_api_key
+OPENAI_BASE_URL=https://api.deepseek.com
+OPENAI_MODEL=deepseek-v4-flash
+```
+
+`deepseek-v4-flash` is the non-thinking mode (the successor to the deprecated `deepseek-chat`). Use `deepseek-v4-pro` if you want the thinking mode. If you keep using OpenAI, leave `OPENAI_BASE_URL` empty and set `OPENAI_MODEL` to a model such as `gpt-4o-mini`.
+
+When running through GitHub Actions, also add `OPENAI_BASE_URL` as a repository secret.
 
 ## Test Locally
 
@@ -59,7 +74,9 @@ Add these repository secrets in GitHub:
 
 ```text
 OPENAI_API_KEY
+OPENAI_BASE_URL
 OPENAI_MODEL
+MAX_STORIES
 EMAIL_HOST
 EMAIL_PORT
 EMAIL_USER
@@ -72,22 +89,16 @@ EMAIL_FROM
 
 ## GitHub Actions Schedule
 
-The workflow is in `.github/workflows/daily_news.yml`.
-
-The public template keeps scheduled runs disabled by default so it will not fail before you configure GitHub Secrets.
-
-After adding your own Secrets, you can run it manually from the GitHub Actions tab through `workflow_dispatch`.
-
-To enable daily scheduling, add a cron schedule such as:
+The workflow is in `.github/workflows/daily_news.yml` and is already configured to run daily at `20:00 Beijing Time` (`12:00 UTC`):
 
 ```yaml
 on:
   schedule:
-    - cron: "21 22 * * *"
+    - cron: "0 12 * * *"
   workflow_dispatch:
 ```
 
-That example runs at `22:21 UTC`, which is `06:21 Beijing Time` on the following calendar day. GitHub Actions scheduled workflows may start later than the configured cron time.
+GitHub Actions scheduled workflows may start a few minutes later than the configured cron time. You can also trigger a run manually from the GitHub Actions tab through `workflow_dispatch`. To change the time, edit the cron expression in the workflow file. The briefing covers the previous 24 hours.
 
 ## First-Version Limitations
 

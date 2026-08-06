@@ -49,7 +49,7 @@ def summarize_ranked_stories(
     if not api_key:
         return _heuristic_summarize(stories)
 
-    client = OpenAI(api_key=api_key, timeout=45)
+    client = OpenAI(api_key=api_key, timeout=45, base_url=os.getenv("OPENAI_BASE_URL"))
     selected_model = model or os.getenv("OPENAI_MODEL", "gpt-4o-mini")
     payload = [
         {
@@ -143,6 +143,6 @@ def _heuristic_summarize(stories: list[RankedStory]) -> BriefContent:
         for story in stories
     ]
     return BriefContent(
-        trend_summary="本地测试模式未调用 OpenAI；以下内容用于检查采集、筛选、排版和邮件流程。",
+        trend_summary="本地测试模式未调用 LLM API；以下内容用于检查采集、筛选、排版和邮件流程。",
         stories=brief_stories,
     )

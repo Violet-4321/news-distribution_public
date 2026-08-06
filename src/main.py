@@ -30,7 +30,12 @@ def main() -> None:
     today = datetime.now().date()
     candidates = collect_news(hours=args.hours)
     filtered = filter_and_deduplicate(candidates)
-    ranked = rank_candidates(filtered, max_stories=10)
+    try:
+        max_stories = int(os.getenv("MAX_STORIES", "10"))
+    except ValueError:
+        max_stories = 10
+    max_stories = max(5, min(10, max_stories))
+    ranked = rank_candidates(filtered, max_stories=max_stories)
     brief = summarize_ranked_stories(ranked)
     vix = get_vix_snapshot()
     subject = render_subject(today)

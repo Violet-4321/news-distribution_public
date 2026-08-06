@@ -24,7 +24,8 @@ class RankedStory:
 
 SYSTEM_PROMPT = """You rank news for a high-signal daily Chinese briefing.
 Prefer omission over inclusion. Select only genuinely important developments from the last 24 hours.
-Prioritize AI and technology, AI-related industries, major global company events, stock markets and business, major macroeconomic events, and exceptionally important global events.
+Prioritize business and economics, AI and AI-related industries, major global company events, stock markets, and major macroeconomic events.
+Cover major economies worldwide, with emphasis on China and other major powers such as the United States, Europe, Japan, and India.
 Include China-US or other political developments only when they have a direct and substantial technology, economic, market, trade, or security impact. Do not let routine political coverage dominate the briefing.
 For company stories, favor consequential earnings surprises, guidance changes, major products, acquisitions, leadership changes, regulatory actions, production disruptions, or strategic shifts at widely followed companies in any country.
 Exclude minor feature updates, technical changelogs, routine announcements, entertainment, sports, and celebrity news unless historically significant.
@@ -483,7 +484,7 @@ def rank_candidates(
     if not api_key:
         return _heuristic_rank(candidates, max_stories)
 
-    client = OpenAI(api_key=api_key, timeout=45)
+    client = OpenAI(api_key=api_key, timeout=45, base_url=os.getenv("OPENAI_BASE_URL"))
     selected_model = model or os.getenv("OPENAI_MODEL", "gpt-4o-mini")
     prioritized_candidates = prioritize_candidates(candidates, limit=OPENAI_CANDIDATE_LIMIT)
     compact_candidates = [
@@ -679,7 +680,7 @@ def _heuristic_rank(candidates: list[NewsCandidate], max_stories: int) -> list[R
                 source=candidate.source,
                 published_at=candidate.published_at.isoformat(),
                 importance_score=min(score, 8),
-                reason="本地测试模式按关键词估算重要性；正式运行请配置 OpenAI API。",
+                reason="本地测试模式按关键词估算重要性；正式运行请配置 LLM API。",
                 summary_seed=candidate.summary,
             )
         )

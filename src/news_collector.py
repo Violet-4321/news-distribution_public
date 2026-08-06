@@ -24,20 +24,24 @@ class NewsCandidate:
 
 GOOGLE_NEWS_QUERIES = [
     "AI OR artificial intelligence when:1d",
-    "technology OR semiconductor OR chips when:1d",
-    "China US relations OR China United States when:1d",
-    "Chinese companies OR Alibaba OR Tencent OR BYD OR Huawei when:1d",
-    "stocks OR earnings OR markets OR IPO OR acquisition when:1d",
-    "major companies OR big tech OR revenue OR profit OR guidance when:1d",
-    "macroeconomy OR inflation OR Federal Reserve OR China economy when:1d",
+    "AI companies OR AI chip OR semiconductor OR GPU when:1d",
+    "economy OR economic growth OR GDP when:1d",
+    "central bank OR interest rate OR inflation OR monetary policy when:1d",
+    "stock market OR stocks OR earnings OR IPO when:1d",
+    "trade OR tariff OR supply chain when:1d",
+    "China economy OR China stocks OR Chinese companies when:1d",
+    "US economy OR Federal Reserve OR Treasury when:1d",
+    "Europe OR Japan OR India economy OR economy outlook when:1d",
+    "major companies OR big tech OR Alibaba OR Tencent OR Microsoft OR Nvidia when:1d",
 ]
 
 GDELT_QUERIES = [
     "artificial intelligence",
-    "China United States",
-    "semiconductor",
-    "macroeconomy",
-    "geopolitics",
+    "economy OR markets OR stocks",
+    "China economy OR China business",
+    "central bank OR interest rate OR inflation",
+    "trade OR tariff OR supply chain",
+    "semiconductor OR AI chips",
 ]
 
 FED_MONETARY_RSS_URL = "https://www.federalreserve.gov/feeds/press_monetary.xml"

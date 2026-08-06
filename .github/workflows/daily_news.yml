@@ -1,6 +1,9 @@
 name: Daily News Brief
 
 on:
+  # 20:00 Beijing time (UTC+8) == 12:00 UTC. GitHub schedules may start a few minutes late.
+  schedule:
+    - cron: "0 12 * * *"
   workflow_dispatch:
 
 env:
@@ -24,7 +27,9 @@ jobs:
       - name: Send daily brief
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
           OPENAI_MODEL: ${{ secrets.OPENAI_MODEL }}
+          MAX_STORIES: ${{ secrets.MAX_STORIES }}
           EMAIL_HOST: ${{ secrets.EMAIL_HOST }}
           EMAIL_PORT: ${{ secrets.EMAIL_PORT }}
           EMAIL_USER: ${{ secrets.EMAIL_USER }}

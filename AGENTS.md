@@ -18,10 +18,10 @@ Never add filler content.
 
 Prioritize:
 
-* AI and technology
-* AI-related industries
-* Major China-US developments
-* Major Chinese company events
+* Business and economics: markets, company earnings, trade, macro
+* AI and AI-related industries
+* Global coverage, with emphasis on China and other major powers (United States, Europe, Japan, India)
+* Major company events in China and worldwide
 * Major macroeconomic events
 
 ## Exclusions
@@ -39,7 +39,7 @@ Unless the event is exceptionally important.
 
 ## Output Goals
 
-Maximum 10 stories per day.
+Between 5 and 10 stories per day (default 10, configurable via `MAX_STORIES`).
 
 All summaries should be written in Chinese.
 
