@@ -126,7 +126,12 @@ def _collect_gdelt(since: datetime, limit_per_query: int) -> list[NewsCandidate]
         except requests.RequestException:
             continue
 
-        for article in response.json().get("articles", []):
+        try:
+            payload = response.json()
+        except ValueError:
+            continue
+
+        for article in payload.get("articles", []):
             published_at = _parse_gdelt_datetime(article.get("seendate"))
             if not published_at or published_at < since:
                 continue
