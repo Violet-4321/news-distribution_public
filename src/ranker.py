@@ -487,7 +487,7 @@ def rank_candidates(
     if not api_key:
         return _heuristic_rank(candidates, max_stories)
 
-    client = OpenAI(api_key=api_key, timeout=45, base_url=os.getenv("OPENAI_BASE_URL"))
+    client = OpenAI(api_key=api_key, timeout=180, base_url=os.getenv("OPENAI_BASE_URL"))
     selected_model = model or os.getenv("OPENAI_MODEL", "gpt-4o-mini")
     prioritized_candidates = prioritize_candidates(candidates, limit=OPENAI_CANDIDATE_LIMIT)
     compact_candidates = [
