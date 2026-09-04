@@ -50,13 +50,13 @@ SERVERCHAN_SENDKEY=
 
 ## 微信推送(可选)
 
-想让简报除了邮件外也推到微信,推荐用 [Server酱(方糖)](https://sct.ftqq.com),免费:
+微信推送**只用于每小时的重大事件提醒**,日报本身只发邮件、不推微信。要收到重大事件提醒,推荐用 [Server酱(方糖)](https://sct.ftqq.com),免费:
 
 1. 打开 [sct.ftqq.com](https://sct.ftqq.com),用微信扫码登录,关注 Server酱 公众号
 2. 复制你的 SendKey,填到 `.env` 的 `SERVERCHAN_SENDKEY=`(用 Actions 时也加到 GitHub Secret)
-3. 工作流生成简报后,会在发送邮件之后把同样内容推到你的微信
+3. 每小时的 `breaking_events.yml` 会把符合条件的重大事件推到你的微信
 
-免费额度每天若干条,足够一条日报加偶尔的重大事件提醒。(也兼容 `PUSHPLUS_TOKEN`,但该服务需要付费实名认证才能发送。)
+免费额度每天若干条,足够偶尔的重大事件提醒。(也兼容 `PUSHPLUS_TOKEN`,但该服务需要付费实名认证才能发送。)
 
 ## 重大事件即时提醒(可选)
 

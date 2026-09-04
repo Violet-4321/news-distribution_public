@@ -44,19 +44,19 @@ Use an app password if your email provider requires one.
 
 ## WeChat push (optional)
 
-To receive the briefing on WeChat in addition to email, use [Server酱 (方糖)](https://sct.ftqq.com) — it is free to start:
+WeChat push is used only for the hourly **major breaking-event** alerts, not for the daily briefing (which is sent by email only). To receive those alerts on WeChat, use [Server酱 (方糖)](https://sct.ftqq.com) — it is free to start:
 
 1. Open [sct.ftqq.com](https://sct.ftqq.com), log in by scanning the QR code with WeChat, and follow the Server酱 WeChat official account.
 2. Copy your SendKey and set it as `SERVERCHAN_SENDKEY` in `.env` (and as a GitHub secret if using Actions).
-3. When the briefing is generated, the workflow sends the same content to your WeChat right after the email.
+3. The hourly `breaking_events.yml` workflow pushes qualifying major events to your WeChat.
 
-The free tier allows several pushes per day, which is enough for one briefing plus occasional major-event alerts. (A PushPlus token is still accepted via `PUSHPLUS_TOKEN`, but that service requires paid real-name verification to send messages.)
+The free tier allows several pushes per day, which is enough for occasional major-event alerts. (A PushPlus token is still accepted via `PUSHPLUS_TOKEN`, but that service requires paid real-name verification to send messages.)
 
 ## Major Breaking Event Alerts (optional)
 
-`breaking_events.yml` runs every hour and watches for sudden, historically major international events — for example a major power suddenly launching a war or large-scale military attack, a nuclear incident, or a catastrophic global event. When such an event is detected, it sends an immediate WeChat alert via PushPlus. The alert threshold is deliberately very strict: routine diplomacy, isolated incidents, and widely anticipated actions are ignored, and each event is alerted only once.
+`breaking_events.yml` runs every hour and watches for sudden, historically major international events — for example a major power suddenly launching a war or large-scale military attack, a nuclear incident, or a catastrophic global event. When such an event is detected, it sends an immediate WeChat alert via Server酱. The alert threshold is deliberately very strict: routine diplomacy, isolated incidents, and widely anticipated actions are ignored, and each event is alerted only once.
 
-It uses the same `OPENAI_*` and `PUSHPLUS_TOKEN` secrets as the daily briefing. Notified events are persisted in `state/notified_breaking.json` and pruned after 14 days.
+It uses the same `OPENAI_*` secrets as the daily briefing plus the WeChat push key (`SERVERCHAN_SENDKEY` or `PUSHPLUS_TOKEN`). Notified events are persisted in `state/notified_breaking.json` and pruned after 14 days.
 
 ## Use DeepSeek instead of OpenAI
 
