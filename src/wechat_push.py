@@ -7,6 +7,7 @@ import requests
 from .summarizer import BriefContent
 from .vix import VixSnapshot
 
+SERVERCHAN_API = "https://sctapi.ftqq.com"
 PUSHPLUS_API = "https://www.pushplus.plus/send"
 
 
@@ -33,26 +34,40 @@ def build_wechat_message(date_text: str, vix: VixSnapshot, brief: BriefContent) 
 
 
 def push_wechat(title: str, content: str) -> bool:
-    token = os.getenv("PUSHPLUS_TOKEN")
-    if not token:
-        return False
     try:
-        response = requests.post(
-            PUSHPLUS_API,
-            json={
-                "token": token,
-                "title": title,
-                "content": content,
-                "template": "txt",
-            },
-            timeout=30,
-        )
-        response.raise_for_status()
-        payload = response.json()
-        if payload.get("code") != 200:
-            print(f"WeChat push warning: {payload.get('msg', 'unknown error')}")
-            return False
-        return True
+        sendkey = os.getenv("SERVERCHAN_SENDKEY")
+        if sendkey:
+            response = requests.post(
+                f"{SERVERCHAN_API}/{sendkey}.send",
+                data={"title": title, "desp": content},
+                timeout=30,
+            )
+            response.raise_for_status()
+            payload = response.json()
+            if payload.get("code") != 0:
+                print(f"WeChat push warning: {payload.get('message', payload)}")
+                return False
+            return True
+
+        token = os.getenv("PUSHPLUS_TOKEN")
+        if token:
+            response = requests.post(
+                PUSHPLUS_API,
+                json={
+                    "token": token,
+                    "title": title,
+                    "content": content,
+                    "template": "txt",
+                },
+                timeout=30,
+            )
+            response.raise_for_status()
+            payload = response.json()
+            if payload.get("code") != 200:
+                print(f"WeChat push warning: {payload.get('msg', 'unknown error')}")
+                return False
+            return True
+        return False
     except Exception as exc:  # noqa: BLE001 - push must never break the pipeline
         print(f"WeChat push failed: {exc}")
         return False
