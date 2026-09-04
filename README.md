@@ -120,6 +120,15 @@ on:
 
 GitHub Actions scheduled workflows may start a few minutes later than the configured cron time. You can also trigger a run manually from the GitHub Actions tab through `workflow_dispatch`. To change the time, edit the cron expression in the workflow file. The briefing covers the previous 24 hours.
 
+## Deploy it to your own account
+
+1. Fork this repository to your GitHub account (Fork button at the top).
+2. In your fork, add repository secrets (Settings → Secrets and variables → Actions → New repository secret): `OPENAI_API_KEY`, `OPENAI_BASE_URL`, `OPENAI_MODEL`, `MAX_STORIES`, `EMAIL_HOST`, `EMAIL_PORT`, `EMAIL_USER`, `EMAIL_PASSWORD`, `EMAIL_TO`, `EMAIL_FROM`, and optionally `SERVERCHAN_SENDKEY` (WeChat push via Server酱).
+3. The `daily_news.yml` workflow is already scheduled at `20:00 Beijing Time`. The optional `breaking_events.yml` monitor runs hourly for major international events. You may disable either by removing its cron entry or deleting the file.
+4. Run it once manually from the Actions tab to verify, then leave the schedule to do the rest.
+
+Tip: a **public** repo gets unlimited free GitHub Actions minutes; a **private** repo is limited to 2,000 minutes/month on a free account, which this system's hourly monitor can come close to using.
+
 ## First-Version Limitations
 
 Google News RSS links may point through Google redirect URLs instead of direct publisher URLs.
@@ -131,3 +140,7 @@ GDELT and RSS results can vary by availability and upstream ranking. Google News
 Federal Reserve and BLS feeds use strict local filters. Routine Fed minutes and smaller economic data moves do not automatically enter the candidate pool.
 
 The project intentionally omits weak stories instead of filling the email.
+
+## License
+
+[MIT](LICENSE)
