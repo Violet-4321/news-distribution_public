@@ -16,16 +16,16 @@ Never add filler content.
 
 ## News Priorities
 
-The briefing covers two core areas as parallel priorities. A story only needs to be important in one of them, not both:
+The briefing covers two core areas as parallel priorities with a strict macro-over-micro bias. A story only needs to be important in one of them, not both:
 
-* Business and economics: markets, company earnings, trade, macro, monetary policy
-* AI: model releases, AI chips and infrastructure, AI companies and industry trends
+* Macro business and economics: monetary policy and central banks, interest rates, inflation, GDP and growth, fiscal policy, trade policy and tariffs, systemic capital-market moves, economy-wide trends
+* Macro AI: national AI strategy and regulation, frontier model generations, AI capex and data-center buildouts, compute and chip supply-chain dynamics, AI's economic and policy implications
+
+Demote micro news (a single company's earnings, routine product releases, individual stock moves, niche technical updates) unless the company is systemically important and the story moves markets or reshapes an industry.
 
 Also prioritize:
 
 * Global coverage, with emphasis on China and other major powers (United States, Europe, Japan, India)
-* Major company events in China and worldwide
-* Major macroeconomic events
 * Balanced coverage across the two core areas
 
 ## Exclusions
@@ -35,6 +35,8 @@ Generally exclude:
 * minor feature updates
 * technical changelogs
 * routine company announcements
+* single-company earnings that are not market-moving
+* routine product and feature releases
 * entertainment news
 * sports news
 * celebrity news

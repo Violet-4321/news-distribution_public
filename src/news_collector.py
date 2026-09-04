@@ -23,25 +23,26 @@ class NewsCandidate:
 
 
 GOOGLE_NEWS_QUERIES = [
-    "AI OR artificial intelligence when:1d",
-    "AI companies OR AI chip OR semiconductor OR GPU when:1d",
-    "economy OR economic growth OR GDP when:1d",
-    "central bank OR interest rate OR inflation OR monetary policy when:1d",
-    "stock market OR stocks OR earnings OR IPO when:1d",
-    "trade OR tariff OR supply chain when:1d",
-    "China economy OR China stocks OR Chinese companies when:1d",
-    "US economy OR Federal Reserve OR Treasury when:1d",
-    "Europe OR Japan OR India economy OR economy outlook when:1d",
-    "major companies OR big tech OR Alibaba OR Tencent OR Microsoft OR Nvidia when:1d",
+    "artificial intelligence industry OR AI regulation OR AI policy when:1d",
+    "frontier AI model OR artificial intelligence breakthrough when:1d",
+    "AI data center OR AI capex OR AI investment when:1d",
+    "AI chip OR semiconductor industry when:1d",
+    "central bank OR monetary policy OR interest rate when:1d",
+    "global economy OR economic outlook OR GDP growth when:1d",
+    "inflation OR recession OR fiscal policy when:1d",
+    "trade policy OR tariff OR export control when:1d",
+    "China economy OR China monetary policy OR China economic policy when:1d",
+    "stock market OR global markets OR market outlook when:1d",
 ]
 
 GDELT_QUERIES = [
-    "artificial intelligence",
-    "economy OR markets OR stocks",
-    "China economy OR China business",
-    "central bank OR interest rate OR inflation",
-    "trade OR tariff OR supply chain",
-    "semiconductor OR AI chips",
+    "artificial intelligence industry OR AI policy",
+    "global economy OR economic outlook",
+    "central bank OR monetary policy",
+    "inflation OR interest rate OR recession",
+    "trade OR tariff OR export control",
+    "China economy OR China economic policy",
+    "AI chips OR semiconductor industry",
 ]
 
 FED_MONETARY_RSS_URL = "https://www.federalreserve.gov/feeds/press_monetary.xml"

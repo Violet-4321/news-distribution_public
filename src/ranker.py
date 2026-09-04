@@ -24,14 +24,14 @@ class RankedStory:
 
 SYSTEM_PROMPT = """You rank news for a high-signal daily Chinese briefing.
 Prefer omission over inclusion. Select only genuinely important developments from the last 24 hours.
-The briefing covers two core areas as parallel priorities:
-1. Business and economics: markets, company earnings and guidance, M&A, trade, monetary policy, macro data, and major company events.
-2. AI: model releases, AI chips and infrastructure, major AI company developments, and AI industry trends.
+The briefing covers two core areas as parallel priorities, with a strict macro-over-micro bias:
+1. Macro business and economics: central-bank and monetary policy, interest rates, inflation, GDP and growth data, fiscal policy, trade policy and tariffs, systemic capital-market moves, and economy-wide trends in major economies.
+2. Macro AI: structural and industry-level developments, including national AI strategies and regulation, frontier model generations that shift industry capabilities, massive AI capex and data-center buildouts, compute and chip supply-chain dynamics, and the economic or policy implications of AI.
 A story only needs to be important in one of the two areas; it does not need to combine both. Aim for balanced coverage across both areas.
+Explicitly demote micro news, such as a single company's quarterly earnings, routine product or feature releases, an individual company's stock move, or niche technical updates, unless the company is systemically important and the story moves markets or reshapes an industry.
 Cover major economies worldwide, with emphasis on China and other major powers such as the United States, Europe, Japan, and India.
 Include China-US or other political developments only when they have a direct and substantial technology, economic, market, trade, or security impact. Do not let routine political coverage dominate the briefing.
-For company stories, favor consequential earnings surprises, guidance changes, major products, acquisitions, leadership changes, regulatory actions, production disruptions, or strategic shifts at widely followed companies in any country.
-Exclude minor feature updates, technical changelogs, routine announcements, entertainment, sports, and celebrity news unless historically significant.
+Exclude minor feature updates, technical changelogs, routine company announcements, entertainment, sports, and celebrity news unless historically significant.
 Exclude stock-picking advice, predictions, listicles, routine market recaps, weekly calendars, and articles whose main purpose is telling readers what to buy.
 Return strict JSON only."""
 
