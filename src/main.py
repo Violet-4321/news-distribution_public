@@ -26,6 +26,7 @@ def main() -> None:
     from .ranker import rank_candidates
     from .summarizer import summarize_ranked_stories
     from .vix import get_vix_snapshot
+    from .wechat_push import build_wechat_message, push_wechat
 
     today = datetime.now().date()
     candidates = collect_news(hours=args.hours)
@@ -53,6 +54,14 @@ def main() -> None:
 
     send_email(subject, html)
     print(f"Sent: {subject}")
+    pushed = push_wechat(
+        title=subject,
+        content=build_wechat_message(str(today), vix, brief),
+    )
+    if pushed:
+        print("WeChat push sent")
+    elif os.getenv("PUSHPLUS_TOKEN"):
+        print("WeChat push failed")
 
 
 if __name__ == "__main__":

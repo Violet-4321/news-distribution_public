@@ -34,9 +34,21 @@ EMAIL_USER=your_smtp_username
 EMAIL_PASSWORD=your_smtp_password
 EMAIL_TO=recipient@example.com
 EMAIL_FROM=sender@example.com
+# Optional: WeChat push via PushPlus (https://www.pushplus.plus). Leave empty to skip.
+PUSHPLUS_TOKEN=
 ```
 
 Use an app password if your email provider requires one.
+
+## WeChat push (optional)
+
+To receive the briefing on WeChat in addition to email, use [PushPlus](https://www.pushplus.plus):
+
+1. Open the PushPlus site and log in by scanning the QR code with WeChat, then follow the "pushplus 推送加" WeChat official account.
+2. Copy your token from the PushPlus personal center (个人中心) and set it as `PUSHPLUS_TOKEN` in `.env` (and as a GitHub secret if using Actions).
+3. When the briefing is generated, the workflow sends the same content to your WeChat right after the email.
+
+Free accounts allow 200 WeChat pushes per day, which is far more than one briefing per day.
 
 ## Use DeepSeek instead of OpenAI
 
@@ -83,6 +95,7 @@ EMAIL_USER
 EMAIL_PASSWORD
 EMAIL_TO
 EMAIL_FROM
+PUSHPLUS_TOKEN
 ```
 
 `OPENAI_MODEL` can be `gpt-4o-mini` for a cost-efficient first version.
