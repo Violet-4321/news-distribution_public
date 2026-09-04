@@ -1,5 +1,7 @@
 # Daily Chinese News Brief
 
+**English** | [简体中文](README.zh-CN.md)
+
 This project generates a high-signal Chinese daily news briefing from the previous 24 hours.
 
 It collects candidate news from Google News RSS, GDELT, filtered Federal Reserve monetary policy RSS, and filtered BLS economic release RSS. It removes obvious low-value stories, deduplicates similar headlines, uses OpenAI to rank and summarize the strongest stories in Simplified Chinese, includes the VIX index, renders a mobile-friendly HTML email, and sends it through SMTP.
