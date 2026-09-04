@@ -71,19 +71,32 @@ class _HTMLTextExtractor(HTMLParser):
         self.parts.append(data)
 
 
-def collect_news(hours: int = 24, limit_per_source: int = 50) -> list[NewsCandidate]:
+def collect_news(
+    hours: int = 24,
+    limit_per_source: int = 50,
+    google_queries: list[str] | None = None,
+    gdelt_queries: list[str] | None = None,
+) -> list[NewsCandidate]:
     since = datetime.now(timezone.utc) - timedelta(hours=hours)
     candidates: list[NewsCandidate] = []
-    candidates.extend(_collect_google_news(since, limit_per_source))
-    candidates.extend(_collect_gdelt(since, limit_per_source))
+    candidates.extend(
+        _collect_google_news(since, limit_per_source, google_queries or GOOGLE_NEWS_QUERIES)
+    )
+    candidates.extend(
+        _collect_gdelt(since, limit_per_source, gdelt_queries or GDELT_QUERIES)
+    )
     candidates.extend(_collect_fed_monetary_news(since, limit_per_source))
     candidates.extend(_collect_bls_major_releases(since, limit_per_source))
     return [item for item in candidates if item.published_at >= since]
 
 
-def _collect_google_news(since: datetime, limit_per_query: int) -> list[NewsCandidate]:
+def _collect_google_news(
+    since: datetime,
+    limit_per_query: int,
+    queries: list[str] | None = None,
+) -> list[NewsCandidate]:
     items: list[NewsCandidate] = []
-    for query in GOOGLE_NEWS_QUERIES:
+    for query in queries or GOOGLE_NEWS_QUERIES:
         encoded = quote_plus(query)
         url = (
             "https://news.google.com/rss/search?"
@@ -109,11 +122,15 @@ def _collect_google_news(since: datetime, limit_per_query: int) -> list[NewsCand
     return items
 
 
-def _collect_gdelt(since: datetime, limit_per_query: int) -> list[NewsCandidate]:
+def _collect_gdelt(
+    since: datetime,
+    limit_per_query: int,
+    queries: list[str] | None = None,
+) -> list[NewsCandidate]:
     items: list[NewsCandidate] = []
     start = since.strftime("%Y%m%d%H%M%S")
     end = datetime.now(timezone.utc).strftime("%Y%m%d%H%M%S")
-    for query in GDELT_QUERIES:
+    for query in queries or GDELT_QUERIES:
         params = {
             "query": query,
             "mode": "ArtList",

@@ -50,6 +50,12 @@ To receive the briefing on WeChat in addition to email, use [PushPlus](https://w
 
 Free accounts allow 200 WeChat pushes per day, which is far more than one briefing per day.
 
+## Major Breaking Event Alerts (optional)
+
+`breaking_events.yml` runs every hour and watches for sudden, historically major international events — for example a major power suddenly launching a war or large-scale military attack, a nuclear incident, or a catastrophic global event. When such an event is detected, it sends an immediate WeChat alert via PushPlus. The alert threshold is deliberately very strict: routine diplomacy, isolated incidents, and widely anticipated actions are ignored, and each event is alerted only once.
+
+It uses the same `OPENAI_*` and `PUSHPLUS_TOKEN` secrets as the daily briefing. Notified events are persisted in `state/notified_breaking.json` and pruned after 14 days.
+
 ## Use DeepSeek instead of OpenAI
 
 The pipeline uses the OpenAI SDK, which is also compatible with DeepSeek's API. To switch models, set these values in `.env`:
