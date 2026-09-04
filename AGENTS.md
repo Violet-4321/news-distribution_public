@@ -16,17 +16,18 @@ Never add filler content.
 
 ## News Priorities
 
-The briefing covers two core areas as parallel priorities with a strict macro-over-micro bias. A story only needs to be important in one of them, not both:
+The briefing covers three core areas as parallel priorities with a strict macro-over-micro bias. A story only needs to be important in one of them, not both:
 
 * Macro business and economics: monetary policy and central banks, interest rates, inflation, GDP and growth, fiscal policy, trade policy and tariffs, systemic capital-market moves, economy-wide trends
 * Macro AI: national AI strategy and regulation, frontier model generations, AI capex and data-center buildouts, compute and chip supply-chain dynamics, AI's economic and policy implications
+* Major international politics, military, and security: armed conflicts, major-power diplomacy and summits, elections and regime changes with global consequences, sanctions and treaties, military deployments and defense policy, national-security moves that reshape international relations
 
-Demote micro news (a single company's earnings, routine product releases, individual stock moves, niche technical updates) unless the company is systemically important and the story moves markets or reshapes an industry.
+Demote micro news (a single company's earnings, routine product releases, individual stock moves, niche technical updates, routine domestic politics) unless the event is systemically significant and moves markets, industries, or international relations.
 
 Also prioritize:
 
-* Global coverage, with emphasis on China and other major powers (United States, Europe, Japan, India)
-* Balanced coverage across the two core areas
+* Global coverage, with emphasis on China and other major powers (United States, Europe, Russia, Japan, India) and major regional flashpoints
+* Balanced coverage across the three core areas
 
 ## Exclusions
 
@@ -40,6 +41,7 @@ Generally exclude:
 * entertainment news
 * sports news
 * celebrity news
+* local political trivia
 
 Unless the event is exceptionally important.
 

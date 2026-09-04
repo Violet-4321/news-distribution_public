@@ -33,6 +33,10 @@ GOOGLE_NEWS_QUERIES = [
     "trade policy OR tariff OR export control when:1d",
     "China economy OR China monetary policy OR China economic policy when:1d",
     "stock market OR global markets OR market outlook when:1d",
+    "military OR defense OR armed conflict OR war when:1d",
+    "geopolitics OR diplomacy OR summit OR international relations when:1d",
+    "sanctions OR treaty OR national security when:1d",
+    "China US OR Russia Ukraine OR Middle East OR Taiwan OR North Korea when:1d",
 ]
 
 GDELT_QUERIES = [
@@ -43,6 +47,8 @@ GDELT_QUERIES = [
     "trade OR tariff OR export control",
     "China economy OR China economic policy",
     "AI chips OR semiconductor industry",
+    "military OR defense OR armed conflict",
+    "geopolitics OR diplomacy OR sanctions",
 ]
 
 FED_MONETARY_RSS_URL = "https://www.federalreserve.gov/feeds/press_monetary.xml"
