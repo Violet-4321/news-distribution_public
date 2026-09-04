@@ -54,7 +54,15 @@ The free tier allows several pushes per day, which is enough for occasional majo
 
 ## Major Breaking Event Alerts (optional)
 
-`breaking_events.yml` runs every hour and watches for sudden, historically major international events — for example a major power suddenly launching a war or large-scale military attack, a nuclear incident, or a catastrophic global event. When such an event is detected, it sends an immediate WeChat alert via Server酱. The alert threshold is deliberately very strict: routine diplomacy, isolated incidents, and widely anticipated actions are ignored, and each event is alerted only once.
+`breaking_events.yml` runs every hour and watches for sudden, historically major international events, for example:
+
+- A major power suddenly launching a war or a large-scale military attack.
+- A nuclear or strategic missile incident with global consequences.
+- An assassination or assassination attempt on a head of state or top political leader of a major power (for example, an assassination attempt on a US president).
+- A sudden national political or constitutional crisis in a major country, such as martial law, a military takeover, a head of government being impeached or removed, a legislature stormed or seized, or an abrupt government collapse.
+- A coup, a catastrophic global-scale attack or disaster, or the sudden breakdown of peace talks that immediately triggers a new war.
+
+When such an event is detected, it sends an immediate WeChat alert. The threshold is deliberately high: routine diplomacy, ordinary elections, political scandals, isolated incidents, and widely anticipated actions are ignored, and each event is alerted only once.
 
 It uses the same `OPENAI_*` secrets as the daily briefing plus the WeChat push key (`SERVERCHAN_SENDKEY` or `PUSHPLUS_TOKEN`). Notified events are persisted in `state/notified_breaking.json` and pruned after 14 days.
 
